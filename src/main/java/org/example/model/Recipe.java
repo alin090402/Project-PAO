@@ -5,6 +5,7 @@ import java.util.List;
 public class Recipe {
 
     List<IngredientInRecipe> ingredients;
+    //unique attribute in database
     String name;
     String description;
 

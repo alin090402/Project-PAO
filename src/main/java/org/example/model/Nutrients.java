@@ -25,4 +25,17 @@ public class Nutrients {
     public double getFats() {
         return fats;
     }
+
+    public double getCalories() {
+        return 4 * proteins + 9 * carbohydrates + 4 * fats;
+    }
+
+    @Override
+    public String toString() {
+        return "Nutrients{" +
+                "carbohydrates=" + carbohydrates +
+                ", proteins=" + proteins +
+                ", fats=" + fats +
+                '}';
+    }
 }

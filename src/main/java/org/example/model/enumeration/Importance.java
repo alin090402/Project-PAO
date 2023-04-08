@@ -1,7 +1,7 @@
 package org.example.model.enumeration;
 
 public enum Importance {
-    PRIMARY,
+    ESSENTIAL,
     OPTIONAL,
     BASIC
 }

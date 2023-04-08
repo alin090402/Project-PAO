@@ -2,6 +2,7 @@ package org.example.application;
 
 import org.example.template.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ public class Menu {
     private List<Pair<String, Consumer<Integer>>> menuItems;
 
     public Menu(List<Pair<String, Consumer<Integer>>> menuItems) {
-        this.menuItems = menuItems;
+        this.menuItems = new ArrayList<>(menuItems);
     }
 
     public void showMenu() {
@@ -23,7 +24,7 @@ public class Menu {
                 System.out.println((i + 1) + ". " + menuItems.get(i).first);
             }
             System.out.print("Enter your choice (0-" + menuItems.size() + "): ");
-            int choice = AcceptInput(0, menuItems.size());
+            int choice = acceptInput(0, menuItems.size());
             if (choice == 0) {
                 break;
             }
@@ -31,7 +32,11 @@ public class Menu {
         }
     }
 
-    private int AcceptInput(int min, int max) {
+    public void addOption(Pair<String, Consumer<Integer> > option) {
+        menuItems.add(option);
+    }
+
+    private int acceptInput(int min, int max) {
         Scanner myInput = new Scanner( System.in );
         Boolean isInputValid = false;
         int choice = 0;
@@ -54,6 +59,8 @@ public class Menu {
         }
         return choice;
     }
+
+
 
 
 }

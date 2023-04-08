@@ -28,4 +28,9 @@ public class Ingredient {
     public void setNutrients(Nutrients nutrients) {
         this.nutrients = nutrients;
     }
+
+    public String toString()
+    {
+        return name;
+    }
 }

@@ -49,5 +49,10 @@ public class IngredientInRecipe {
         this.importance = importance;
     }
 
+    public String toString()
+    {
+        return ingredient.toString() + " " + amount + " " + unitOfMeasure.toString() + "   " + importance.toString();
+    }
+
 
 }

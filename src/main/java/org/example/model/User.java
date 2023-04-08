@@ -20,6 +20,10 @@ public class User extends BaseModel {
         this.inventory = inventory;
     }
 
+    public boolean isPremium() {
+        return false;
+    }
+
     public Role getRole() {
         return role;
     }
@@ -54,6 +58,6 @@ public class User extends BaseModel {
 
     public String toString()
     {
-        return "User: " + this.username + " Role: " + this.role;
+        return "User: " + this.username + " Role: " + this.role + " Premium: " + this.isPremium() + "\n";
     }
 }

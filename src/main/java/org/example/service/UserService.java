@@ -66,6 +66,13 @@ public class UserService {
         userRepository.updateUser(user);
     }
 
+    public void deleteUser(String username) {
+        userRepository.deleteUser(username);
+    }
+
+    public void givePremium(String username) {
+        userRepository.givePremium(username);
+    }
 
 
 }
