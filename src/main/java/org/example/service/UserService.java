@@ -9,6 +9,7 @@ import org.example.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class UserService {
     private static UserService instance;
@@ -35,7 +36,7 @@ public class UserService {
         }
     }
 
-    public List<User> getAllUsers() {
+    public Set<User> getAllUsers() {
         return userRepository.getUsers();
     }
     public User FindUserByUsername(String username) {

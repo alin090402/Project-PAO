@@ -1,15 +1,16 @@
 package org.example.model;
 
 import java.util.List;
+import java.util.Set;
 
 public class Recipe {
 
-    List<IngredientInRecipe> ingredients;
+    Set<IngredientInRecipe> ingredients;
     //unique attribute in database
     String name;
     String description;
 
-    public Recipe(String name, String description, List<IngredientInRecipe> ingredients) {
+    public Recipe(String name, String description, Set<IngredientInRecipe> ingredients) {
         this.name = name;
         this.description = description;
         this.ingredients = ingredients;
@@ -23,7 +24,7 @@ public class Recipe {
         return description;
     }
 
-    public List<IngredientInRecipe> getIngredients() {
+    public Set<IngredientInRecipe> getIngredients() {
         return ingredients;
     }
 
@@ -35,7 +36,7 @@ public class Recipe {
         this.description = description;
     }
 
-    public void setIngredients(List<IngredientInRecipe> ingredients) {
+    public void setIngredients(Set<IngredientInRecipe> ingredients) {
         this.ingredients = ingredients;
     }
 

@@ -6,15 +6,17 @@ import org.example.model.enumeration.Importance;
 import org.example.model.enumeration.UnitOfMeasure;
 
 import java.util.List;
+import java.util.Set;
 
 public class RecipeRepository {
     private List<Recipe> recipes;
+
 
     private static RecipeRepository instance;
 
     private RecipeRepository() {
         recipes = List.of(
-                new Recipe("Pancakes", "Delicious pancakes", List.of(
+                new Recipe("Pancakes", "Delicious pancakes", Set.of(
                         new IngredientInRecipe(IngredientRepository.getInstance().getIngredientByName("Flour"), 300, UnitOfMeasure.G, Importance.ESSENTIAL),
                         new IngredientInRecipe(IngredientRepository.getInstance().getIngredientByName("Egg"), 100, UnitOfMeasure.G, Importance.ESSENTIAL),
                         new IngredientInRecipe(IngredientRepository.getInstance().getIngredientByName("Milk"), 100, UnitOfMeasure.ML, Importance.ESSENTIAL),
@@ -22,8 +24,8 @@ public class RecipeRepository {
                         new IngredientInRecipe(IngredientRepository.getInstance().getIngredientByName("Salt"), 100, UnitOfMeasure.G, Importance.BASIC),
                         new IngredientInRecipe(IngredientRepository.getInstance().getIngredientByName("Butter"), 100, UnitOfMeasure.G, Importance.OPTIONAL)
                 )),
-                new Recipe("Pasta", "Delicious pasta", List.of()),
-                new Recipe("Pizza", "Delicious pizza", List.of())
+                new Recipe("Pasta", "Delicious pasta", Set.of()),
+                new Recipe("Pizza", "Delicious pizza", Set.of())
         );
     }
 

@@ -5,13 +5,11 @@ import org.example.model.PremiumUser;
 import org.example.model.User;
 import org.example.model.enumeration.Role;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class UserRepository {
 
-    private List<User> users = new ArrayList<>(List.of(
+    private Set<User> users = new TreeSet<>(List.of(
             new PremiumUser(1, Role.ADMIN, "admin", new ArrayList<>(), new Inventory(new ArrayList<>()), new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000)),
             new User(2, Role.USER, "user", new ArrayList<>(), new Inventory(new ArrayList<>())),
             new User(3, Role.USER, "user2", new ArrayList<>(), new Inventory(new ArrayList<>())),
@@ -28,7 +26,7 @@ public class UserRepository {
         }
         return instance;
     }
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
     public User getUserById(long id) {
