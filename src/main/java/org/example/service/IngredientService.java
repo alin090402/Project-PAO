@@ -22,8 +22,8 @@ public class IngredientService {
         return instance;
     }
 
-    public void addIngredient(String name, Nutrients nutrients) {
-        ingredientRepository.addIngredient(name, nutrients);
+    public void addIngredient(Ingredient ingredient) {
+        ingredientRepository.addIngredient(ingredient);
     }
 
     public Ingredient getIngredientByName(String name) {

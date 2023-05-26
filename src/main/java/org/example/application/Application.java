@@ -142,7 +142,7 @@ public abstract class Application {
                             System.out.println("Enter carbohydrates:");
                             double carbohydrates = scanner.nextDouble();
 
-                            ingredientService.addIngredient(name,new Nutrients( carbohydrates, proteins, fats));
+                            ingredientService.addIngredient(new Ingredient(name, new Nutrients( carbohydrates, proteins, fats)));
                         }),
                         new Pair<String, Consumer<Integer>>("Inventory", (Integer choice) -> {
                             inventoryMenu.showMenu();

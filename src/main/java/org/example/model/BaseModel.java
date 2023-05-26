@@ -7,6 +7,9 @@ public class BaseModel implements Comparable<BaseModel> {
     public BaseModel(long id) {
         this.id = id;
     }
+    public BaseModel() {
+        this.id = null;
+    }
 
     public Long getId() {
         return id;

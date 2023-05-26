@@ -3,7 +3,7 @@ package org.example.model;
 import java.util.List;
 import java.util.Set;
 
-public class Recipe {
+public class Recipe extends BaseModel {
 
     Set<IngredientInRecipe> ingredients;
     //unique attribute in database

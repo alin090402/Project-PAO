@@ -3,12 +3,13 @@ package org.example.model;
 /**
  * It is entity class that represents the ingredients.
  */
-public class Ingredient {
+public class Ingredient extends BaseModel {
     private String name;
 
     private Nutrients nutrients;
 
     public Ingredient(String name, Nutrients Nutrients) {
+        super();
         this.name = name;
         this.nutrients = Nutrients;
     }

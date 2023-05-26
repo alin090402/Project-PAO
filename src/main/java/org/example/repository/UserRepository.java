@@ -1,10 +1,13 @@
 package org.example.repository;
 
+import org.example.database.Database;
 import org.example.model.Inventory;
 import org.example.model.PremiumUser;
 import org.example.model.User;
 import org.example.model.enumeration.Role;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.*;
 
 public class UserRepository {
@@ -36,8 +39,45 @@ public class UserRepository {
         return users.stream().filter(user -> user.getUsername().equals(username)).findFirst().orElse(null);
     }
     public void addUser(User user) {
-        user.setId(NextId++);
-        users.add(user);
+
+        try{
+            String insertUsers = "INSERT INTO users (role, username) VALUES (?, ?)";
+            PreparedStatement preparedStatement = Database.getInstance().getPreparedStatement(insertUsers);
+            preparedStatement.setString(1, user.getRole().toString());
+            preparedStatement.setString(2, user.getUsername());
+            Database.getInstance().executePrepared(preparedStatement);
+
+            if (user instanceof PremiumUser){
+                String insertPremiumUsers = "INSERT INTO users_premium (user_id, expirationDate) VALUES (?, ?)";
+                preparedStatement = Database.getInstance().getPreparedStatement(insertPremiumUsers);
+                preparedStatement.setLong(1, user.getId());
+                preparedStatement.setDate(2, new java.sql.Date(((PremiumUser) user).getExpirationDate().getTime()));
+                Database.getInstance().executePrepared(preparedStatement);
+            }
+
+            String insertInventory = "INSERT INTO inventories (user_id, ingredient_id) VALUES (?, ?)";
+            preparedStatement = Database.getInstance().getPreparedStatement(insertInventory);
+            for (var ingredient: user.getInventory().getIngredients()){
+                preparedStatement.setLong(1, user.getId());
+                preparedStatement.setLong(2, ingredient.getId());
+                Database.getInstance().executePrepared(preparedStatement);
+            }
+
+            String insertFavoriteRecipes = "INSERT INTO favorite_recipes (user_id, recipe_id) VALUES (?, ?)";
+            preparedStatement = Database.getInstance().getPreparedStatement(insertFavoriteRecipes);
+            for (var recipe: user.getFavoriteRecipes()){
+                preparedStatement.setLong(1, user.getId());
+                preparedStatement.setLong(2, recipe.getId());
+                Database.getInstance().executePrepared(preparedStatement);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+//        user.setId(NextId++);
+//        users.add(user);
     }
     public void updateUser(User user) {
         User userToUpdate = getUserById(user.getId());

@@ -2,7 +2,7 @@ package org.example.model;
 
 import java.util.List;
 
-public class Inventory {
+public class Inventory extends BaseModel {
     List<Ingredient> ingredients;
 
     public Inventory(List<Ingredient> ingredients) {

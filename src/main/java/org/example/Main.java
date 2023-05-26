@@ -2,9 +2,15 @@ package org.example;
 
 import org.example.application.Application;
 import org.example.application.Menu;
+import org.example.database.Database;
+import org.example.repository.IngredientRepository;
 import org.example.template.Pair;
+import org.example.utils.ConfigLoader;
 
+import javax.xml.crypto.Data;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 import java.util.function.Consumer;
 
 public class Main {
@@ -23,6 +29,15 @@ public class Main {
 //            )
 //        );
 //        menu.showMenu();
+        Database database = Database.getInstance();
+        try {
+            database.init();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Could not connect to database");
+            System.out.println(e.getMessage());
+        }
         Application.start();
     }
 
